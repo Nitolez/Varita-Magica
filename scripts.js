@@ -1,18 +1,18 @@
 document.addEventListener('DOMContentLoaded', (event) => {
-    // Función para obtener un color aleatorio
-    function getRandomColor() {
-        const letters = '0123456789ABCDEF';
-        let color = '#';
-        for (let i = 0; i < 6; i++) {
-            color += letters[Math.floor(Math.random() * 16)];
-        }
-        return color;
-    }
+    // Función para obtener un valor aleatorio de un array
+    const getRandom = (array) => {
+        return array[Math.floor(Math.random() * array.length)];
+    };
+
+    // Paleta de colores tomada de coolors.co
+    const colors = ['#FF5733', '#33FF57', '#3357FF', '#FF33A8', '#33FFF3'];
+
+    // Lista de GIFs en la carpeta assets
+    const gifs = ['assets/magic-1.gif', 'assets/magic-2.gif', 'assets/magic-3.gif'];
 
     // Función para cambiar una imagen a un GIF aleatorio
     function changeImageToRandomGif(img) {
-        const gifs = ['assets/magic-1.gif', 'assets/magic-2.gif', 'assets/magic-3.gif'];
-        const randomGif = gifs[Math.floor(Math.random() * gifs.length)];
+        const randomGif = getRandom(gifs);
         img.src = randomGif;
     }
 
@@ -27,11 +27,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
             changeImageToRandomGif(target);
             console.log('Imagen cambiada a un GIF aleatorio.');
         } else if (target.tagName.toLowerCase() === 'p') {
-            target.style.color = getRandomColor();
-            target.style.backgroundColor = getRandomColor();
+            target.style.color = getRandom(colors);
+            target.style.backgroundColor = getRandom(colors);
             console.log('Color del párrafo cambiado.');
         } else if (target.tagName.toLowerCase() === 'article' || target.tagName.toLowerCase() === 'section') {
-            target.style.backgroundColor = getRandomColor();
+            target.style.backgroundColor = getRandom(colors);
             console.log('Color de fondo del bloque cambiado.');
         }
     });
@@ -47,12 +47,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
         } else if (target.tagName.toLowerCase() === 'p') {
             target.originalColor = target.style.color;
             target.originalBackgroundColor = target.style.backgroundColor;
-            target.style.color = getRandomColor();
-            target.style.backgroundColor = getRandomColor();
+            target.style.color = getRandom(colors);
+            target.style.backgroundColor = getRandom(colors);
             console.log('Color del párrafo cambiado en hover.');
         } else if (target.tagName.toLowerCase() === 'article' || target.tagName.toLowerCase() === 'section') {
             target.originalBackgroundColor = target.style.backgroundColor;
-            target.style.backgroundColor = getRandomColor();
+            target.style.backgroundColor = getRandom(colors);
             console.log('Color de fondo del bloque cambiado en hover.');
         }
     });
