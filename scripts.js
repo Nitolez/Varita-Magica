@@ -1,4 +1,3 @@
-document.addEventListener('DOMContentLoaded', (event) => {
     // Función para obtener un valor aleatorio de un array
     const getRandom = (array) => {
         return array[Math.floor(Math.random() * array.length)];
